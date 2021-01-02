@@ -16,6 +16,7 @@ import info.upac.entities.Patient;
 import info.upac.entities.Personne;
 import info.upac.entities.Remboursement;
 import info.upac.entities.Specialiste;
+import info.upac.entities.VisiteSpecialiste;
 
 /**
  * Java based configuration
@@ -42,7 +43,7 @@ public class SingletonHibernateUtil {
 
 				settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
 
-				settings.put(Environment.HBM2DDL_AUTO, "create");
+				settings.put(Environment.HBM2DDL_AUTO, "create-drop");
 
 				configuration.setProperties(settings);
 				configuration.addAnnotatedClass(Consultation.class);
@@ -53,6 +54,7 @@ public class SingletonHibernateUtil {
 				configuration.addAnnotatedClass(Remboursement.class);
 				configuration.addAnnotatedClass(Specialiste.class);
 				configuration.addAnnotatedClass(Personne.class);
+				configuration.addAnnotatedClass(VisiteSpecialiste.class);
 
 				ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
 						.applySettings(configuration.getProperties()).build();

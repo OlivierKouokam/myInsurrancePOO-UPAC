@@ -10,9 +10,9 @@ public class Remboursement {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private float taux;
-	private int montant;
-	private String destinataire;
+	private float taux;	//en pourcentage
+	private int montant;	//en monnaie
+	private String destinataire;	//certainement celle du système bancaire concerné
 	
 	public Remboursement() {
 		super();

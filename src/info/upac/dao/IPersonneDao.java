@@ -1,5 +1,7 @@
 package info.upac.dao;
 
-public interface IPersonneDao {
+import info.upac.entities.Personne;
 
+public interface IPersonneDao {
+	public void savePersonne(Personne p);
 }

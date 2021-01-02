@@ -4,12 +4,12 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import info.upac.dao.utils.SingletonHibernateUtil;
-import info.upac.entities.Personne;
+import info.upac.entities.Patient;
 
-public class PersonneDaoImpl implements IPersonneDao {
+public class PatientDaoImpl implements IPatientDao{
 
 	@Override
-	public void savePersonne(Personne p) {
+	public void savePatient(Patient p) {
 		Transaction transaction = null;
 		try (Session session = SingletonHibernateUtil.getSessionFactory().openSession()) {
 			transaction = session.beginTransaction();
@@ -24,5 +24,5 @@ public class PersonneDaoImpl implements IPersonneDao {
             e.printStackTrace();
 		}
 	}
-
+	
 }
