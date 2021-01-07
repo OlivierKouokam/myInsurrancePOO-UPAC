@@ -1,4 +1,4 @@
-package info.upac.dao;
+package info.upac.dao.interfac;
 
 import info.upac.entities.Personne;
 

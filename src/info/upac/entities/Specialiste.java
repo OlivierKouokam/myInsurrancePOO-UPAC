@@ -2,12 +2,14 @@ package info.upac.entities;
 
 import java.util.List;
 
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
-@DiscriminatorValue("SPECIALISTE")
+
+//@DiscriminatorValue("SPECIALISTE")
+@PrimaryKeyJoinColumn(name = "id")
 public class Specialiste extends Medecin{
 	private String specialite;
 	private float tarifHonoraires;

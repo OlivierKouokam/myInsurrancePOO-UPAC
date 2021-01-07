@@ -2,12 +2,14 @@ package info.upac.entities;
 
 import java.util.List;
 
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
-@DiscriminatorValue("GENERALISTE")
+
+//@DiscriminatorValue("GENERALISTE")
+@PrimaryKeyJoinColumn(name = "id")
 public class Generaliste extends Medecin{
 	@OneToMany(mappedBy = "medecinTraitant")
 	private List<Patient> patients;

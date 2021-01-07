@@ -2,13 +2,15 @@ package info.upac.entities;
 
 import java.util.List;
 
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
-@DiscriminatorValue("PATIENT")
+
+//@DiscriminatorValue("PATIENT")
+@PrimaryKeyJoinColumn(name = "id")
 public class Patient extends Personne{
 	private String numeroSecuriteSocial;
 	

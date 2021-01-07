@@ -1,20 +1,21 @@
-package info.upac.dao;
+package info.upac.dao.impl;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import info.upac.dao.interfac.IPersonneDao;
 import info.upac.dao.utils.SingletonHibernateUtil;
-import info.upac.entities.Medecin;
+import info.upac.entities.Personne;
 
-public class MedecinDaoImpl implements IMedecinDao{
+public class PersonneDaoImpl implements IPersonneDao {
 
 	@Override
-	public void saveMedecin(Medecin m) {
+	public void savePersonne(Personne p) {
 		Transaction transaction = null;
 		try (Session session = SingletonHibernateUtil.getSessionFactory().openSession()) {
 			transaction = session.beginTransaction();
 			
-			session.save(m);
+			session.save(p);
 			
 			transaction.commit();
 		} catch (Exception e) {

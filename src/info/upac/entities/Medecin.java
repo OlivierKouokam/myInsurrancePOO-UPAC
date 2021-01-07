@@ -2,18 +2,19 @@ package info.upac.entities;
 
 import java.util.List;
 
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "TYPE_MEDECIN",discriminatorType = DiscriminatorType.STRING, length = 11)
-@DiscriminatorValue("MEDECIN")
+
+//@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+//@DiscriminatorColumn(name = "TYPE_MEDECIN",discriminatorType = DiscriminatorType.STRING, length = 11)
+//@DiscriminatorValue("MEDECIN")
+@PrimaryKeyJoinColumn(name = "id")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Medecin extends Personne{
 	private String adresseCabinet;
 	private String phoneCabinet;
