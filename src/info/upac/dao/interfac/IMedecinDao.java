@@ -14,4 +14,6 @@ public interface IMedecinDao {
 	public Medecin getMedecin(Long id);
 
 	public List<Medecin> getAllMedecin();
+	
+	
 }

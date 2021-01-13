@@ -1,5 +1,9 @@
 package info.upac.dao.impl;
 
+import java.util.List;
+
+import javax.persistence.Query;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -24,5 +28,30 @@ public class GeneralisteDaoImpl implements IGeneralisteDao{
             }
             e.printStackTrace();
 		}
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Generaliste> getGeneralistesParNoms(String motCle) {
+		Transaction transaction = null;
+		List<Generaliste> generalists = null;
+		try (Session session = SingletonHibernateUtil.getSessionFactory().openSession()) {
+			// start a transaction
+			transaction = session.beginTransaction();
+			// get an user object
+			
+			Query query = session.createQuery("SELECT g from Generaliste g WHERE g.nom LIKE CONCAT('%',?1,'%')");
+			query.setParameter(1, motCle);
+			generalists = query.getResultList();
+			
+			// commit transaction
+			transaction.commit();
+		} catch (Exception e) {
+			if (transaction != null) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		}
+		return generalists;
 	}
 }
