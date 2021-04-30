@@ -14,4 +14,6 @@ public interface IPatientDao {
 	public Patient getPatient(Long id);
 
 	public List<Patient> getAllPatient();
+
+	public List<Patient> getPatientsParNoms(String motCle);
 }

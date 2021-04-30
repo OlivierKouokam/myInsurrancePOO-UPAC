@@ -3,14 +3,13 @@ package info.upac.web;
 import java.util.ArrayList;
 import java.util.List;
 
-import info.upac.entities.Generaliste;
-import info.upac.entities.Medecin;
+import info.upac.entities.Patient;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data @NoArgsConstructor
-public class GeneralisteModel {
+public class PatientModel {
 	private String motCle;
-	private List<Generaliste> generalistes = new ArrayList<Generaliste>();
+	private List<Patient> patients = new ArrayList<Patient>();
 	
 }

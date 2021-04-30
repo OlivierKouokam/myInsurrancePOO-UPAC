@@ -2,6 +2,8 @@ package info.upac.dao.impl;
 
 import java.util.List;
 
+import javax.persistence.Query;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -113,5 +115,29 @@ public class PatientDaoImpl implements IPatientDao{
 			e.printStackTrace();
 		}
 		return listOfPatient;
+	}
+	
+	@Override
+	public List<Patient> getPatientsParNoms(String motCle) {
+		Transaction transaction = null;
+		List<Patient> patients = null;
+		try (Session session = SingletonHibernateUtil.getSessionFactory().openSession()) {
+			// start a transaction
+			transaction = session.beginTransaction();
+			// get an user object
+			
+			Query query = session.createQuery("SELECT p from Patient p WHERE p.nom LIKE CONCAT('%',?1,'%')");
+			query.setParameter(1, motCle);
+			patients = query.getResultList();
+			
+			// commit transaction
+			transaction.commit();
+		} catch (Exception e) {
+			if (transaction != null) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		}
+		return patients;
 	}
 }

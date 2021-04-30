@@ -135,6 +135,14 @@ public class ControleurServlet extends HttpServlet {
 					
 				}
 			}
+		} else if (path.equals("/chercherpatient.do")) {
+			String motCle = request.getParameter("motCle");
+			PatientModel patientModel = new PatientModel();
+			patientModel.setMotCle(motCle);
+			List<Patient> patients = patientDao.getPatientsParNoms(motCle);
+			patientModel.setPatients(patients);
+			request.setAttribute("patientModel", patientModel);
+			request.getRequestDispatcher("liste-patient-med.jsp").forward(request, response);
 		}
 //		else { 
 //			response.sendError(Response.SC_NOT_FOUND);

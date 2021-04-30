@@ -87,7 +87,7 @@
                                     </form>
                                 </div>
                             </div>
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+<!--                             <div class="col-lg-6 d-none d-lg-block bg-login-image"></div> -->
                         </div>
                     </div>
                 </div>

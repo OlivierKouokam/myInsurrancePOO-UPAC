@@ -68,7 +68,7 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Liste des médécins</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Liste des Patients</h1>
                     </div>
 
                     <!-- Content Row -->
@@ -81,9 +81,9 @@
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
 <!--                             <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
-							<form action="cherchermedecin.do" method="post">	
+							<form action="chercherpatient.do" method="post">	
 								<label for="motCle">Mot Clé</label>
-								<input type="text" name="motCle" value="${medecinModel.motCle}"/>
+								<input type="text" name="motCle" value="${patientModel.motCle}"/>
 								<button type="submit" class="btn btn-primary">Chercher</button>
 							</form>
                         </div>
@@ -95,9 +95,10 @@
                                             <th>ID</th>
                                             <th>Nom</th>
                                             <th>Prénom</th>
-                                            <th>Catégorie</th>
-<!--                                             <th>Adresse Cabinet</th> -->
-<!--                                             <th>Numéro Cabinet</th> -->
+                                            <th>Date de Naissance</th>
+                                            <th>Sexe</th>
+                                            <th>Assuré ?</th>
+                                            <th>Matricule</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -105,20 +106,22 @@
                                             <th>ID</th>
                                             <th>Nom</th>
                                             <th>Prénom</th>
-                                            <th>Catégorie</th>
-<!--                                             <th>Adresse Cabinet</th> -->
-<!--                                             <th>Numéro Cabinet</th> -->
+                                            <th>Date de Naissance</th>
+                                            <th>Sexe</th>
+                                            <th>Assuré ?</th>
+                                            <th>Matricule</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        <c:forEach items="${generalisteModel.generalistes}" var="g">
+                                        <c:forEach items="${patientModel.patients}" var="p">
                                         	<tr>
-	                                        	<td>${g.id}</td>
-												<td>${g.nom}</td>
-												<td>${g.prenom}</td>
-												<td>${g.categorie}</td>
-												<td>${g.adressecabinet}</td>
-												<td>${g.phonecabinet}</td>
+	                                        	<td>${p.id}</td>
+												<td>${p.nom}</td>
+												<td>${p.prenom}</td>
+												<td>${p.dateNaissance}</td>
+												<td>${p.sexe}</td>
+												<td>${p.isAssure()}</td>
+												<td>${p.matricule}</td>												
 <!-- 												<td> -->
 <!-- 													<div class="dropdown mb-4"> -->
 <!-- 				                                        <button class="btn btn-primary dropdown-toggle" type="button" -->
@@ -137,8 +140,8 @@
 												
 <%-- 												<td><a href="editmedecin.do?id=${g.id}" class="btn btn-warning"><b>Editer</b></a></td> --%>
 												<td>
-													<a href="editmedecin.do?id=${g.id}" class="btn btn-warning"><b>E</b></a>
-													<a href="addPatient.do?id=${m.id}" class="btn btn-warning"><b>P</b></a>
+													<a href="editpatient.do?id=${g.id}" class="btn btn-warning"><b>Edit</b></a>
+													<a href="addconsultation.do?id=${m.id}" class="btn btn-warning"><b>Consultation</b></a>
 												</td>
                                         	</tr>
                                         </c:forEach>                                       
